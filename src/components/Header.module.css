@@ -1,0 +1,35 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 56px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-h);
+  letter-spacing: -0.3px;
+}
+
+.count {
+  font-size: 13px;
+  font-family: var(--mono);
+  color: var(--text);
+  background: var(--code-bg);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+}

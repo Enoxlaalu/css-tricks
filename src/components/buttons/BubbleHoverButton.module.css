@@ -1,0 +1,86 @@
+.button {
+  --transition-duration: 400ms;
+
+  font-size: 2rem;
+  appearance: none;
+  background: #1a2b3c;
+  padding: 1em 2em;
+  border-radius: 100px;
+  border: 1px solid;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color var(--transition-duration) ease;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.btnContent {
+  pointer-events: none;
+  position: relative;
+  z-index: 3;
+}
+
+.btnCells {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  &::before {
+    content: '';
+    position: absolute;
+    position-anchor: --hovered-cell;
+    left: calc(anchor(left) - 20px);
+    right: calc(anchor(right) - 20px);
+    top: calc(anchor(top) - 20px);
+    bottom: calc(anchor(bottom) - 20px);
+    margin: 0 auto auto;
+
+    width: 10px;
+    aspect-ratio: 1;
+    background: #51f0ed;
+    background-image: linear-gradient(
+      to right,
+      #51f0ed,
+      color-mix(in srgb, #51f0ed, white 50%)
+    );
+    border-radius: 100vw;
+
+    transition:
+      all var(--transition-duration) ease,
+      margin 0ms var(--transition-duration);
+    transition-behavior: allow-discrete;
+    transform: scale(0);
+  }
+
+  &:has(> :nth-child(n + 11):hover)::before {
+    margin: auto auto 0;
+  }
+
+  &:hover::before {
+    transform: scale(55);
+    transition:
+      transform var(--transition-duration) ease,
+      margin 0ms 0ms;
+  }
+
+  & span {
+    position: relative;
+  }
+
+  &:not(:hover) span {
+    transition: anchor-name 0ms var(--transition-duration);
+    transition-behavior: allow-discrete;
+  }
+
+  & span:hover {
+    anchor-name: --hovered-cell;
+    transition: anchor-name 0ms;
+  }
+}
