@@ -1,4 +1,11 @@
-*, *::before, *::after {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -7,12 +14,19 @@
   padding: 0;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -65,7 +79,6 @@ input, button, textarea, select {
 }
 
 #root {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
   border-inline: 1px solid var(--border);

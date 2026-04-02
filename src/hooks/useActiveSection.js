@@ -1,18 +1,27 @@
 import { useEffect, useState } from 'react'
 
 function useActiveSection(ids) {
-  const [activeId, setActiveId] = useState(null)
+  const [activeId, setActiveId] = useState(ids[0] ?? null)
 
   useEffect(() => {
+    const activeMap = {}
+
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
+        entries.forEach((entry) => {
+          const id = entry.target.id
+          const idx = ids.indexOf(id)
+
           if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
+            activeMap[idx] = id
+          } else {
+            delete activeMap[idx]
           }
-        }
+        })
+
+        setActiveId(Object.values(activeMap)[0] ?? null)
       },
-      { rootMargin: '-30% 0px -60% 0px' }
+      { rootMargin: '-80px 0px 0px 0px' },
     )
 
     ids.forEach((id) => {

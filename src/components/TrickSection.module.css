@@ -4,14 +4,53 @@
   overflow: hidden;
 }
 
-.header {
+.cardHeader {
   padding: 24px 28px 20px;
   border-bottom: 1px solid var(--border);
   background: var(--code-bg);
 }
 
-.header h2 {
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.titleRow h2 {
+  margin: 0;
+}
+
+.youtubeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--text);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  & svg {
+    width: 14px;
+    height: 14px;
+    color: #ff0000;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    color: var(--text-h);
+    border-color: var(--accent-border);
+    background: var(--accent-bg);
+  }
 }
 
 .meta {
